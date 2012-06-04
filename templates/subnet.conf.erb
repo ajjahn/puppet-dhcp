@@ -1,0 +1,40 @@
+# File managed by puppet
+
+subnet <%= subnet %> netmask <%= netmask %> {
+
+<% if routers.is_a?(Array) -%>
+  option routers <%= routers.collect! {|i| "#{i}" }.join(",") %>;
+<% else -%>
+  option routers <%= routers %>;
+<% end -%>
+
+<% if dns_servers.is_a?(Array) -%>
+  option domain-name-servers <%= dns_servers.collect! {|i| "#{i}" }.join(",") %>;
+<% elsif dns_servers.is_a?(String) -%>
+  option domain-name-servers <%= dns_servers %>;
+<% end -%>
+
+<% if subnet_mask -%>
+  option subnet-mask <%= subnet_mask %>;
+<% elsif netmask -%>
+  option subnet-mask <%= netmask %>;
+<% end -%>
+
+  option broadcast-address <%= broadcast %>;
+  range <%= range_begin %> <%= range_end %>;
+
+<% if domain_name -%>
+  option domain-name "<%= domain_name %>";
+<% else -%>
+  option domain-name "<%= scope.lookupvar('::domain') %>";
+<% end -%>
+
+<% if other_opts and not other_opts.empty? -%>
+  <% if other_opts.is_a?(Array) -%>
+<%= other_opts.collect! {|i| "  #{i};"}.join("\n") %>
+  <% else -%>
+  <%= other_opts %>;
+  <% end -%>
+<% end -%>
+
+}
