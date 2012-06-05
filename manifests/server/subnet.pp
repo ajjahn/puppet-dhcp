@@ -19,6 +19,7 @@ define dhcp::server::subnet ($ensure=present,
     owner => root,
     group => root,
     content => template("${module_name}/subnet.conf.erb"),
+    require => Class["dhcp::server::config"],
     notify => Class["dhcp::server::service"]
   }
   
