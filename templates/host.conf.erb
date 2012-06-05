@@ -1,0 +1,7 @@
+host <%= name %> {
+  hardware ethernet <%= hwaddress %>;
+  fixed-address <%= address %>;
+<% if options -%>
+  <%= options %>
+<% end -%>
+}

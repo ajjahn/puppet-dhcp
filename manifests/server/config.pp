@@ -23,4 +23,11 @@ class dhcp::server::config {
     mode => 0755,
   }
   
+  file { "/etc/dhcp/hosts":
+    ensure => directory,
+    owner => "root",
+    group => "root",
+    mode => 0755,
+  }
+  
 }
