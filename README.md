@@ -8,7 +8,7 @@ Tested on Ubuntu 12.04, patches to support other operating systems are welcome.
 
 Clone this repo to your Puppet modules directory
 
-    git clone git://github.com/ajjahn/puppet-dhcp.git samba
+    git clone git://github.com/ajjahn/puppet-dhcp.git dhcp
 
 ## Usage
 
