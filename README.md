@@ -10,6 +10,10 @@ Clone this repo to your Puppet modules directory
 
     git clone git://github.com/ajjahn/puppet-dhcp.git dhcp
 
+For Ubuntu 11.04 install the following package:
+
+    http://archive.ubuntu.com/ubuntu/pool/main/a/augeas/augeas-lenses_0.10.0-0ubuntu4_all.deb
+
 ## Usage
 
 Tweak and add the following to your site manifest:
