@@ -1,5 +1,5 @@
 name 'puppet-dhcp'
-version '0.1.0'
+version '0.1.1'
 summary "Module for provisioning DHCP"
 description "Module for provisioning Internet Systems Consortium DHCP Server (dhcpd)"
 author 'Adam Jahn'
