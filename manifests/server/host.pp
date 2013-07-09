@@ -1,7 +1,9 @@
 define dhcp::server::host($ensure=present,
                           $address,
                           $hwaddress,
-                          $options=false ) {
+                          $options=false,
+                          $next_server=false,
+                          $filename=false ) {
 
   $context = '/files/etc/dhcp/dhcpd.conf'
   $config = "/etc/dhcp/hosts/${name}.conf"
