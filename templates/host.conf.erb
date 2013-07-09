@@ -6,4 +6,12 @@ host <%= name %> {
 <% if options -%>
   <%= options %>
 <% end -%>
+
+<% if filename -%>
+   filename "<%= filename %>";
+<% end -%>
+
+<% if next_server -%>
+   next-server "<%= next_server %>";
+<% end -%>
 }
