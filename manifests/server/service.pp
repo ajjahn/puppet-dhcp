@@ -1,6 +1,18 @@
 class dhcp::server::service {
   
-  service { "isc-dhcp-server":
+  case $operatingsystem {
+    ubuntu, debian: {
+      $service_name = "isc-dhcp-server"
+    }
+    centos, redhat: {
+      $service_name = "dhcpd"
+    }
+    default: {
+      fail("Unsupported operating system")
+    }
+  }
+
+  service { $service_name:
     ensure => running,
     hasstatus => true,
     hasrestart => true,
