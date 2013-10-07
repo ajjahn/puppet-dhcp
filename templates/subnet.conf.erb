@@ -40,4 +40,7 @@ subnet <%= subnet %> netmask <%= netmask %> {
 <% if next_server -%>
   next-server <%= next_server %>;
 <% end -%>
+<% if filename -%>
+  filename "<%= filename %>";
+<% end -%>
 }
