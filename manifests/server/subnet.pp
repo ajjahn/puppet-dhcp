@@ -7,7 +7,9 @@ define dhcp::server::subnet ($ensure=present,
                             $dns_servers=false,
                             $subnet_mask=false,
                             $domain_name=false,
-                            $other_opts=false) {
+                            $other_opts=false,
+                            $next_server=false,
+                            $filename=false) {
   
   $subnet = $name
   $context = '/files/etc/dhcp/dhcpd.conf'   
