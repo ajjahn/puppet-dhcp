@@ -1,7 +1,18 @@
 class dhcp::server::install {
   
-  package { "isc-dhcp-server":
+  case $operatingsystem {
+    ubuntu, debian: {
+      $package_name = "isc-dhcp-server"
+    }
+    centos, redhat: {
+      $package_name = "dhcp"
+    }
+    default: {
+      fail("Unsupported operating system")
+    }
+  }
+
+  package { $package_name:
     ensure => installed,
   }
-  
 }
