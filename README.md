@@ -38,7 +38,7 @@ Tweak and add the following to your site manifest:
 
       dhcp::server::host {'example-host-name':
         address   => '192.168.1.50',
-        hwaddress => '00:3a:99:eb:66:26';
+        hwaddress => '00:3a:99:eb:66:26',
       }
 
     }
