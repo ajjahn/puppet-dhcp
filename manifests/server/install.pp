@@ -4,7 +4,7 @@ class dhcp::server::install {
     ubuntu, debian: {
       $package_name = "isc-dhcp-server"
     }
-    centos, redhat: {
+    centos, redhat, Scientific: {
       $package_name = "dhcp"
     }
     default: {
