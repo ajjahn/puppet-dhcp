@@ -1,6 +1,6 @@
-define dhcp::server::host($ensure=present,
-                          $address,
+define dhcp::server::host($address,
                           $hwaddress,
+                          $ensure=present,
                           $options=false,
                           $next_server=false,
                           $filename=false ) {
@@ -9,13 +9,13 @@ define dhcp::server::host($ensure=present,
   $config = "/etc/dhcp/hosts/${name}.conf"
   $include = "include[. = '${config}']"
 
-  file { "${config}":
-    ensure => $ensure,
-    owner => root,
-    group => root,
+  file { $config:
+    ensure  => $ensure,
+    owner   => root,
+    group   => root,
     content => template("${module_name}/host.conf.erb"),
-    require => Class["dhcp::server::config"],
-    notify => Class["dhcp::server::service"]
+    require => Class['dhcp::server::config'],
+    notify  => Class['dhcp::server::service']
   }
 
   augeas { "include-${name}.conf":
@@ -24,6 +24,6 @@ define dhcp::server::host($ensure=present,
       present => "set ${include} ${config}",
       default => "rm ${include}",
     },
-    require => File["${config}"]
+    require => File[$config]
     }
   }
