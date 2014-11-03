@@ -4,7 +4,7 @@ class dhcp::server::service {
     ubuntu, debian: {
       $service_name = 'isc-dhcp-server'
     }
-    centos, redhat, Scientific: {
+    centos, redhat, Scientific, OracleLinux: {
       $service_name = 'dhcpd'
     }
     default: {
