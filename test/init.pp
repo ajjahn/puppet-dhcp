@@ -1,0 +1,3 @@
+# Smoketest.
+
+include dhcp::server

@@ -1,0 +1,4 @@
+fixtures:
+  repositories:
+  symlinks:
+    dhcp: "#{source_dir}"
