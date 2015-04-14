@@ -1,0 +1,22 @@
+{
+  "name": "ajjahn-dhcp",
+  "version": "0.2.0",
+  "author": "Adam Jahn",
+  "summary": "Module for provisioning DHCP",
+  "license": "Apache-2.0",
+  "source": "https://github.com/ajjahn/puppet-dhcp",
+  "project_page": "https://github.com/ajjahn/puppet-dhcp",
+  "issues_url": "https://github.com/ajjahn/puppet-dhcp/issues",
+  "description": "Module for provisioning Internet Systems Consortium DHCP Server (dhcpd)",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04"
+      ]
+    }
+  ],
+  "dependencies": [
+
+  ]
+}
