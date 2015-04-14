@@ -1,5 +1,7 @@
 # Puppet DHCP Module
 
+[![Build Status](https://travis-ci.org/ajjahn/puppet-dhcp.png?branch=master)](https://travis-ci.org/ajjahn/puppet-dhcp)
+
 Module for provisioning Internet Systems Consortium DHCP Server (dhcpd)
 
 Tested on Ubuntu 12.04, patches to support other operating systems are welcome.
