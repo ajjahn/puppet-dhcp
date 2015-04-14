@@ -1,3 +1,5 @@
+# == Class dhcp::server::install
+#
 class dhcp::server::install {
 
   case $::operatingsystem {

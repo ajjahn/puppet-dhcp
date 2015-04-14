@@ -1,3 +1,5 @@
+# == Define dhcp::server::host
+#
 define dhcp::server::host($address,
                           $hwaddress,
                           $ensure=present,

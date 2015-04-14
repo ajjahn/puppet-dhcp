@@ -1,3 +1,5 @@
+# == Define dhcp::server::subnet
+#
 define dhcp::server::subnet ($broadcast,
                             $netmask,
                             $routers,

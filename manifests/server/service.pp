@@ -1,3 +1,5 @@
+# == Class dhcp::server::service
+#
 class dhcp::server::service {
 
   case $::operatingsystem {
@@ -13,11 +15,11 @@ class dhcp::server::service {
   }
 
   service { $service_name:
-    ensure      => running,
-    hasstatus   => true,
-    hasrestart  => true,
-    enable      => true,
-    require     => Class['dhcp::server::config']
+    ensure     => running,
+    hasstatus  => true,
+    hasrestart => true,
+    enable     => true,
+    require    => Class['dhcp::server::config']
   }
 
 }
