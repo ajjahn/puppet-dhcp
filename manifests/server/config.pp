@@ -19,17 +19,19 @@ class dhcp::server::config {
   }
 
   file { '/etc/dhcp/subnets':
-    ensure => directory,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    require => File['/etc/dhcp'],
   }
 
   file { '/etc/dhcp/hosts':
-    ensure => directory,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    require => File['/etc/dhcp'],
   }
 
 }
