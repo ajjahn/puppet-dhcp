@@ -1,18 +1,19 @@
 # == Define dhcp::server::subnet
 #
-define dhcp::server::subnet ($broadcast,
-                            $netmask,
-                            $routers,
-                            $range_begin,
-                            $range_end,
-                            $ensure=present,
-                            $dns_servers=false,
-                            $subnet_mask=false,
-                            $domain_name=false,
-                            $other_opts=false,
-                            $next_server=false,
-                            $filename=false) {
-
+define dhcp::server::subnet (
+  $broadcast,
+  $netmask,
+  $routers,
+  $range_begin,
+  $range_end,
+  $ensure      = present,
+  $dns_servers = false,
+  $subnet_mask = false,
+  $domain_name = false,
+  $other_opts  = false,
+  $next_server = false,
+  $filename    = false
+) {
   $subnet = $name
   $context = '/files/etc/dhcp/dhcpd.conf'
   $config = "/etc/dhcp/subnets/${name}.conf"
@@ -24,16 +25,16 @@ define dhcp::server::subnet ($broadcast,
     group   => root,
     content => template("${module_name}/subnet.conf.erb"),
     require => Class['dhcp::server::config'],
-    notify  => Class['dhcp::server::service']
+    notify  => Class['dhcp::server::service'],
   }
 
+  $changes = $ensure ? {
+    'present' => "set ${include} ${config}",
+    default   => "rm ${include}",
+  }
   augeas { "include-${name}.conf":
     context => $context,
-    changes => $ensure ? {
-      present => "set ${include} ${config}",
-      default => "rm ${include}",
-      },
-    require => File[$config]
+    changes => $changes,
+    require => File[$config],
   }
-
 }

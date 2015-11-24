@@ -2,11 +2,11 @@
 #
 class dhcp::server::params {
   case $::operatingsystem {
-    ubuntu, debian: {
+    'ubuntu', 'debian': {
       $package_name = 'isc-dhcp-server'
       $service_name = 'isc-dhcp-server'
     }
-    centos, redhat, Scientific: {
+    'centos', 'redhat', 'Scientific': {
       $package_name = 'dhcp'
       $service_name = 'dhcpd'
     }
