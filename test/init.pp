@@ -1,3 +1,3 @@
 # Smoketest.
 
-include dhcp::server
+include ::dhcp::server

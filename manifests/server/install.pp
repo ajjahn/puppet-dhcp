@@ -1,7 +1,7 @@
 # == Class dhcp::server::install
 #
 class dhcp::server::install inherits dhcp::server::params {
-  package { $package_name:
+  package { $dhcp::server::params::package_name:
     ensure => installed,
   }
 }

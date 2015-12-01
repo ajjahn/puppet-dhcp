@@ -1,14 +1,15 @@
 # == Define dhcp::server::host
 #
-define dhcp::server::host($address,
-                          $hwaddress,
-                          $ensure=present,
-                          $options=false,
-                          $next_server=false,
-                          $filename=false ) {
-
+define dhcp::server::host(
+  $address,
+  $hwaddress,
+  $ensure      = present,
+  $options     = false,
+  $next_server = false,
+  $filename    = false
+) {
   $context = '/files/etc/dhcp/dhcpd.conf'
-  $config = "/etc/dhcp/hosts/${name}.conf"
+  $config  = "/etc/dhcp/hosts/${name}.conf"
   $include = "include[. = '${config}']"
 
   file { $config:
@@ -17,15 +18,16 @@ define dhcp::server::host($address,
     group   => root,
     content => template("${module_name}/host.conf.erb"),
     require => Class['dhcp::server::config'],
-    notify  => Class['dhcp::server::service']
+    notify  => Class['dhcp::server::service'],
   }
 
+  $changes = $ensure ? {
+    'present' => "set ${include} ${config}",
+    default   => "rm ${include}",
+  }
   augeas { "include-${name}.conf":
     context => $context,
-    changes => $ensure ? {
-      present => "set ${include} ${config}",
-      default => "rm ${include}",
-    },
-    require => File[$config]
-    }
+    changes => $changes,
+    require => File[$config],
   }
+}
