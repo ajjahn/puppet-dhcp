@@ -24,26 +24,26 @@ For Ubuntu 11.04 install the following package:
 
 Tweak and add the following to your site manifest:
 
-    node 'server.example.com' {
+```puppet
+node 'server.example.com' {
+  include dhcp::server
 
-      include dhcp::server
+  dhcp::server::subnet { '192.168.1.0':
+    netmask     => '255.255.255.0',
+    routers     => '192.168.1.1',
+    broadcast   => '192.168.1.255',
+    range_begin => '192.168.1.100',
+    range_end   => '192.168.1.200',
+    domain_name => 'example.com',
+    dns_servers => ['8.8.8.8', '8.8.4.4']
+  }
 
-      dhcp::server::subnet { '192.168.1.0':
-        netmask     => '255.255.255.0',
-        routers     => '192.168.1.1',
-        broadcast   => '192.168.1.255',
-        range_begin => '192.168.1.100',
-        range_end   => '192.168.1.200',
-        domain_name => 'example.com',
-        dns_servers => ['8.8.8.8', '8.8.4.4']
-      }
-
-      dhcp::server::host {'example-host-name':
-        address   => '192.168.1.50',
-        hwaddress => '00:3a:99:eb:66:26',
-      }
-
-    }
+  dhcp::server::host {'example-host-name':
+    address   => '192.168.1.50',
+    hwaddress => '00:3a:99:eb:66:26',
+  }
+}
+```
 
 ## Contributing
 
