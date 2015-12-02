@@ -1,17 +1,17 @@
 # File managed by puppet
 
-host <%= name %> {
-  hardware ethernet <%= hwaddress %>;
-  fixed-address <%= address %>;
-<% if options -%>
-  <%= options %>
+host <%= @name %> {
+  hardware ethernet <%= @hwaddress %>;
+  fixed-address <%= @address %>;
+<% if @options -%>
+  <%= @options %>
 <% end -%>
 
-<% if filename -%>
-   filename "<%= filename %>";
+<% if @filename -%>
+   filename "<%= @filename %>";
 <% end -%>
 
-<% if next_server -%>
-   next-server <%= next_server %>;
+<% if @next_server -%>
+   next-server <%= @next_server %>;
 <% end -%>
 }
