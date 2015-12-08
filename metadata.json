@@ -1,6 +1,6 @@
 {
   "name": "ajjahn-dhcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Adam Jahn",
   "summary": "Module for provisioning DHCP",
   "license": "Apache-2.0",
